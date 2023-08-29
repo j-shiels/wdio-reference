@@ -2,7 +2,7 @@
  * Base wdio config file. This file controls all the config points for the wdio and cucumber framework.
  */
 import type { Options } from '@wdio/types';
-import { envData } from './tests/utils/second_option.utils.ts';
+import { envData } from './tests/utils/data.utils.ts';
 import { capabilities } from './config/capabilities/default.ts';
 
 const browserName: string = process.env.browser || 'chrome';
@@ -146,7 +146,7 @@ export const config: Options.Testrunner = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ['./tests/step-definitions/*.ts'],
+    require: ['./tests/step_definitions/*.ts'],
     // <boolean> show full backtrace for errors
     backtrace: false,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)

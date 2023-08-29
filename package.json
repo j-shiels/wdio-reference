@@ -20,7 +20,7 @@
     "wdio-local": "wdio run ./wdio.conf.ts --Env=local",
     "wdio-dev": "wdio run ./wdio.conf.ts --Env=dev",
     "wdio-int": "wdio run ./wdio.conf.ts --Env=int",
-    "wdio-crossbrowser": "wdio run config/cross-browser.conf.ts --Env=dev",
+    "wdio-crossbrowser": "wdio run config/cross_browser.conf.ts --Env=dev",
     "prettier": "npx prettier .",
     "lint": "npx eslint ."
   }

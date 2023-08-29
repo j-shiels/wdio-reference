@@ -1,7 +1,7 @@
 /**
  * type to hold environment data read in from json files
  */
-export type EnvData = {
+export type EnvType = {
     /**
      * Environment URL
      */

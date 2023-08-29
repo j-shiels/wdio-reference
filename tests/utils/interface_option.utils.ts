@@ -2,11 +2,11 @@ import Arguments from './arguments.utils.ts';
 
 const environment: string = Arguments.getEnvironmentValue();
 
-const envDataJson = await import(`../testdata/${environment}.json`, {
+const envDataJson = await import(`../test_data/${environment}.json`, {
   assert: { type: 'json' }
 });
 
-const staticDataJson = await import(`../testdata/static_data.json`, {
+const staticDataJson = await import(`../test_data/static_data.json`, {
   assert: { type: 'json' }
 });
 

@@ -1,9 +1,9 @@
 import {Given} from '@wdio/cucumber-framework';
 
-import { envData, staticData } from '../utils/second_option.utils.ts';
-Given(/^I print out the test data from option 2$/, async () => {
+import { envData, staticData } from '../utils/data.utils.ts';
+Given(/^I print out the test data from option 3$/, async () => {
 
-    console.log("Option 2");
+    console.log("Option 3");
     console.log("-------------------");
     console.log(envData.url);
     console.log(envData.user);

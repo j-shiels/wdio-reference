@@ -1,5 +1,5 @@
 import { browser } from '@wdio/globals';
-import { envData } from '../utils/third_option.utils.ts';
+import { envData } from '../utils/data.utils.ts';
 
 /**
  * main page object containing all methods, selectors and functionality
