@@ -1,0 +1,17 @@
+{
+  "local": {
+    "url": "https://google.com/local",
+    "user": "localUser",
+    "password": "PLACEHOLDER"
+  },
+  "dev": {
+    "url": "https://google.com/dev",
+    "user": "devUser",
+    "password": "PLACEHOLDER"
+  },
+  "int": {
+    "url": "https://google.com/int",
+    "user": "intUser",
+    "password": "PLACEHOLDER"
+  }
+}
