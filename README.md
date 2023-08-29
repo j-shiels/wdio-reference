@@ -1,5 +1,7 @@
 # WDIO Reference Project
 
+THIS IS A WORK IN PROGRESS!
+
 ## Getting Started
 
 ### Cloning
