@@ -2,6 +2,7 @@
  * type to hold environment data read in from json files
  */
 export type EnvType = {
+    [key: string]: unknown
     /**
      * Environment URL
      */
