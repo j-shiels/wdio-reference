@@ -56,3 +56,8 @@ THIS IS A WORK IN PROGRESS!
 ### Console Output
 
 ### HTML Report
+
+## Visual Validation
+
+### Generating Baselines
+
