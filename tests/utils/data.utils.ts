@@ -5,7 +5,7 @@ import { StaticType } from '../types/static.type.ts';
 
 const environment: string = Arguments.getEnvironmentValue();
 
-const envDataJson = await import(`../test_data/${environment}.json`, {
+const envDataJson = await import(`../test_data/environments/${environment}.json`, {
   assert: { type: 'json' }
 });
 
