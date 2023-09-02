@@ -15,51 +15,79 @@ THIS IS A WORK IN PROGRESS!
 ## Implementation Details
 
 ### Folder Structure
-- wdio
-  - config
-    - capabilities
-  - tests
-    - features
-    - page-objects
-    - step-definitions
-    - test-data
-    - types
-    - utils
+- ```wdio ```- top level project folder
+  - ```config``` - folder to hold all config e.g capabilities and difference wdio.conf
+  - ```test_data``` - holds environmental and static test data
+  - ```tests``` - holds the test implementation
+    - ```features``` - gherkin .feature files
+    - ```pages``` - page object model pages/sub-pages
+    - ```step_definitions``` - cucumber step definitions that implement scenario steps
+    - ```types``` - custom type definitions
+    - ```utils``` - utility and helper functions/classes to support test implementation 
 
 ### WDIO
 
 ### TypeScript
+Project uses the typescript Webdriver.io bindings/config
 
 ### Cucumber
+Test definitions are written in Gherkin within feature files and implemented in step definitions using the Cucumber Framework
 
 ### Prettier
+Code styling is handled by the default Prettier config
 
 ### Eslint
+Eslint uses the Typescript/eslint and Prettier extensions 
 
 ### LambdaTest
+    In Progress
 
 <br>
 
 ## Config Options
 
+
 ### WDIO Config
+Main config for WDIO is contained within ```wdio.conf.ts```.
+
+This project also uses custom test data stored in json files. This can be either static or env specific in nature and we have a few utils functions to handle this.
 
 ### Env Config
-- yargs
+Environment specific config is held with json files under the ```test_data/environment``` location. We trigger which json file to use based on input from the cmdline when the suite is ran.
+
+We make use of the yargs module to parse a ```--Env``` argument which is then used to choose the relevant json file. A run cmd could look like this:
+```
+wdio run ./wdio.conf.ts --Env=dev
+```
+In this scenario the argument that we would use is 'dev' and therefore we would select the file test_date/environments/dev.json
+
+There is also a built-in fallback to use the ```local.json``` file.
 
 ### Static Config
+Unlike Environment specific config, static config is just always read in from ```test_data/static.json```
 
 <br>
 
 ## Reporting
 
 ### Console Output
+Console output is handled by the logging level within ```wdio.conf.ts``` and also by the wdio spec reporter which gives a summary in console at the end of a run.
 
 ### HTML Report
-- generate cucumberJS Json (https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter)
-- consume cucumber JS Json into html report (https://github.com/WasiqB/multiple-cucumber-html-reporter)
+The HTML report uses the below two modules to be created.
+- Generate cucumberJS Json (https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter)
+- Consume cucumber JS Json into html report (https://github.com/WasiqB/multiple-cucumber-html-reporter)
+
+This required some additional code added to the ```onPrepare``` and ```onComplete``` Hooks within the ```wdio.conf.ts```
 
 ## Visual Validation
+This project uses a combination of ```pixelmatch``` and ```pngjs``` to read in and compare an expected image (from file) against an actual image (taken at the time of validation)
+
+There is diff logic within ```pixelmatch``` and we can attach the expected, actual or diff images to the html report for viewing/debugging a failure.
 
 ### Generating Baselines
+Visual validation also requires a baseline to be set and any new visual validation scenarios will need a workflow that saves this image off. For this purpose we have a static.json data variable which can trigger this workflow. When this workflow is triggered if there is no file in the expected location the suite will save off a current screenshot to that location.
+
+    NOTE: getvisualValidationBaseline will PASS the validation where an expected image is not found while saving off a new image.
+          This should be an active choice by the person running the suite
 
