@@ -4,7 +4,7 @@ import Page from './page.ts';
 /**
  * sub-page containing specific selectors and methods for a specific page
  */
-class LoginPage extends Page {
+class ExamplePage extends Page {
     /**
      * define selectors using getter methods
      */
@@ -38,4 +38,4 @@ class LoginPage extends Page {
     }
 }
 
-export default new LoginPage();
+export default new ExamplePage();

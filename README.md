@@ -1,14 +1,53 @@
 # WDIO Reference Project
 
-THIS IS A WORK IN PROGRESS!
+> THIS IS A WORK IN PROGRESS!
+
+This is a reference implementation project for Webdriver.io, it will cover most of the basic setup and have some features which are essential for most.
+
+Features include:
+* Cucumber Framework
+* Test data management
+  * Environment specific test data
+  * Static test data
+* Visual validation
+  * Comparison
+  * Generating Baselines
+* Cross-Browser testing 
+  * Local running
+  * Third Party Service
+* Reporting
+  * HTML report with embedded test information
+
 
 ## Getting Started
+This project has been built with the intention of making it as simple as possible for people to pick it up and run with it.
+
+All example code should be well commented and have docStrings for ease of use.
 
 ### Cloning
+Clone this repo to your machine and copy the entire ```wdio-reference``` contents to your desired folder location for your test suite.
+
+Run ```npm install```
 
 ### Running Reference Tests
+Running the suite is managed via npm scripts within the ```package.json```
+
+example: ```npm run wdio```
+
 
 ### How To Make It You Own
+
+Simple start implementing your own .feature file and building the adjoining step_definitions. Modify the supporting files such as ```test_data/environments/local.json``` and once you have a few on the go you can remove the reference code within the repo.
+
+Files you can remove when ready:
+```example.feature```
+```example.page.ts```
+```generic.steps.ts```
+
+Files you should be modifying as you build:
+```test_data/all```
+```types/all```
+```visual_validation/all```
 
 <br>
 

@@ -2,14 +2,14 @@ import { Given } from '@wdio/cucumber-framework';
 
 import { envData, staticData } from '../utils/data.utils.ts';
 import { visualValidationCheck } from '../utils/visual_validation.utils.ts';
-import LoginPage from '../pages/login.page.ts';
+import ExamplePage from '../pages/example.page.ts';
 
 const pages = {
-  login: LoginPage
+  example: ExamplePage
 };
 Given(/^the project allows them to print out the test data$/, async () => {
-  await pages.login.open();
-  await expect(await pages.login.currentUrl()).toMatch(`${envData.url}/`);
+  await pages.example.open();
+  await expect(await pages.example.currentUrl()).toMatch(`${envData.url}/`);
 
   console.log('Test Data');
   console.log('-------------------');
