@@ -56,6 +56,8 @@ THIS IS A WORK IN PROGRESS!
 ### Console Output
 
 ### HTML Report
+- generate cucumberJS Json (https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter)
+- consume cucumber JS Json into html report (https://github.com/WasiqB/multiple-cucumber-html-reporter)
 
 ## Visual Validation
 

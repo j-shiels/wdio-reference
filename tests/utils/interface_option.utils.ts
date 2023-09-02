@@ -23,7 +23,7 @@ interface IEnvData {
  * Interface for Static data
  */
 interface IStaticData {
-  example: string;
+  getVisualValidationBaselines: boolean;
 }
 
 class DataUtils {

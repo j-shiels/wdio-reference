@@ -4,6 +4,7 @@ import { browser } from '@wdio/globals'
 import * as fs from 'fs';
 import {randomUUID} from "crypto"
 import { staticData } from './data.utils.ts';
+import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
 /**
  * Function to carry out a Visual Validation Check. It will read in the expected image from expectedPath and take a current screenshot to compare.
@@ -21,7 +22,11 @@ export async function visualValidationCheck(expectedImage: string) {
   //setup various needed items for the comparison to work.
   const expected = PNG.sync.read(fs.readFileSync(expectedImage));
   const uuid = randomUUID();
-  const actual = PNG.sync.read(await browser.saveScreenshot(`./visual_validation/actual-${uuid}.png`));
+  const actual = PNG.sync.read(await browser.saveScreenshot(`./.tmp/visual_validation/actual-${uuid}.png`));
+  // cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+  const test = fs.readFileSync(`./.tmp/visual_validation/actual-${uuid}.png`).toString("base64");
+  cucumberJson.attach(test, 'image/png');
+
   const { width, height } = expected;
   const diff = new PNG({ width, height });
 
@@ -30,7 +35,7 @@ export async function visualValidationCheck(expectedImage: string) {
 
   //write the debug image to reporting if needed.
   if (diffCount > 0){
-    fs.writeFileSync(`./visual_validation/diff-${uuid}.png`, PNG.sync.write(diff));
+    fs.writeFileSync(`./.tmp/visual_Validation/diff-${uuid}.png`, PNG.sync.write(diff));
     console.log("Images do not match")
   }
 

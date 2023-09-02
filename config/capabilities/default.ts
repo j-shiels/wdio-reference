@@ -13,6 +13,18 @@ export const capabilities = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': browserOptions,
-        acceptInsecureCerts: true
+        acceptInsecureCerts: true,
+        'cjson:metadata': {
+            // For a browser
+            browser: {
+                name: 'chrome',
+                version: '58',
+            },
+            device: 'Local Machine',
+            platform: {
+                name: 'Windows',
+                version: '11'
+            }
+        },
     }
 }

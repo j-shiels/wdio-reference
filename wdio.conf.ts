@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * Base wdio config file. This file controls all the config points for the wdio and cucumber framework.
  */
 import type { Options } from '@wdio/types';
 import { envData } from './tests/utils/data.utils.ts';
 import { capabilities } from './config/capabilities/default.ts';
+// @ts-ignore
+import { generate } from 'multiple-cucumber-html-reporter';
+import * as fs from 'node:fs/promises';
 
 const browserName: string = process.env.browser || 'chrome';
 const baseUrl: string = envData.url;
@@ -140,7 +145,7 @@ export const config: Options.Testrunner = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ['spec'],
+  reporters: ['spec', 'cucumberjs-json'],
 
   //
   // If you are using Cucumber you need to specify the location of your step definitions.
@@ -167,7 +172,7 @@ export const config: Options.Testrunner = {
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
     ignoreUndefinedDefinitions: false
-  }
+  },
 
   //
   // =====
@@ -182,8 +187,12 @@ export const config: Options.Testrunner = {
    * @param {object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  // onPrepare: function (config, capabilities) {
-  // },
+  //@ts-ignore
+  onPrepare: async (config, capabilities) => {
+    // Remove the `.tmp/` folder that holds the json and report files
+    await fs.rm('.tmp/', { force: true, recursive: true });
+    return await fs.mkdir('.tmp/visual_validation', { recursive: true });
+  },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -324,8 +333,31 @@ export const config: Options.Testrunner = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  // onComplete: function(exitCode, config, capabilities, results) {
-  // },
+  //@ts-ignore
+  onComplete: function(exitCode, config, capabilities, results) {
+    const date = new Date();
+
+    generate({
+      // Required
+      // This part needs to be the same path where you store the JSON files
+      // default = '.tmp/json/'
+      jsonDir: '.tmp/json/',
+      reportPath: '.tmp/report/',
+      reportName: 'WDIO Reference Project',
+      pageTitle: 'WDIO Test Report',
+      displayDuration: true,
+      displayReportTime: true,
+      customData: {
+        title: 'Run info',
+        data: [
+          { label: 'Project', value: 'WDIO Reference' },
+          { label: 'MVF', value: '1234' },
+          { label: 'Execution Date/Time', value: date.toLocaleString() }
+        ]
+      }
+      // for more options see https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter
+    });
+  }
   /**
    * Gets executed when a refresh happens.
    * @param {string} oldSessionId session ID of the old session
