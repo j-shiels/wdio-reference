@@ -132,3 +132,4 @@ dist
 # IDE folders
 .idea/
 .idea/workspace.xml
+/.tmp/
