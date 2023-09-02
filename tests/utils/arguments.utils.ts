@@ -2,7 +2,8 @@ import yargs from 'yargs';
 
 // eslint-disable-next-line
 const argv: any = yargs(process.argv.slice(2)).argv;
-console.log(argv);
+
+// console.log(argv);
 
 /**
  * Class to parse any arguments passed in on the cmd line
@@ -24,6 +25,11 @@ class Arguments {
    * @return {String} value from the "Env" argument
    */
   getEnvironmentValue(): string {
+    if (argv.Env === undefined) {
+      console.log("Env argument is Undefined. Please pass in your Env via cmd line e.g '--Env=dev'");
+      console.log('defaulting to use local test_data');
+      return 'local';
+    }
     return argv.Env;
   }
 }

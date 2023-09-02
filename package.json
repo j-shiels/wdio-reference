@@ -23,6 +23,7 @@
   },
   "scripts": {
     "wdio-local": "wdio run ./wdio.conf.ts --Env=local",
+    "wdio-local-no-param": "wdio run ./wdio.conf.ts",
     "wdio-dev": "wdio run ./wdio.conf.ts --Env=dev",
     "wdio-int": "wdio run ./wdio.conf.ts --Env=int",
     "wdio-crossbrowser": "wdio run config/cross_browser.conf.ts --Env=dev",
