@@ -1,6 +1,6 @@
 Feature: Example
   an example feature file, show casing some of the features of this reference project
 
-  Scenario: As a user, I can use test data
-    Given I print out the test data
-    And I perform visual validation
+  Scenario: A test automation user can use the features of this project
+    Given the project allows them to print out the test data
+    And the project can do visual validation

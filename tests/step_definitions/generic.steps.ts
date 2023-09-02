@@ -7,7 +7,7 @@ import LoginPage from '../pages/login.page.ts';
 const pages = {
   login: LoginPage
 };
-Given(/^I print out the test data$/, async () => {
+Given(/^the project allows them to print out the test data$/, async () => {
   await pages.login.open();
   await expect(await pages.login.currentUrl()).toMatch(`${envData.url}/`);
 
@@ -16,9 +16,9 @@ Given(/^I print out the test data$/, async () => {
   console.log(envData.url);
   console.log(envData.user);
   console.log(envData.password);
-  console.log(staticData.example);
+  console.log(staticData.getVisualValidationBaselines);
   console.log('-------------------');
 });
-Given(/^I perform visual validation$/, async function () {
+Given(/^the project can do visual validation$/, async function () {
   await expect(await visualValidationCheck('./tests/visual_validation/expected.png')).toBeTruthy();
 });
