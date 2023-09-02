@@ -1,7 +1,7 @@
 import { Given } from '@wdio/cucumber-framework';
 
 import { envData, staticData } from '../utils/data.utils.ts';
-import { visualValidationCheck } from '../utils/image_compare.utils.ts';
+import { visualValidationCheck } from '../utils/visual_validation.utils.ts';
 import LoginPage from '../pages/login.page.ts';
 
 const pages = {
@@ -20,5 +20,5 @@ Given(/^I print out the test data$/, async () => {
   console.log('-------------------');
 });
 Given(/^I perform visual validation$/, async function () {
-  await expect(await visualValidationCheck('./visual_validation/expected.png')).toBeTruthy();
+  await expect(await visualValidationCheck('./tests/visual_validation/expected.png')).toBeTruthy();
 });
