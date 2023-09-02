@@ -12,7 +12,7 @@ export default class Page {
    */
 
   public open(path: string) {
-    return browser.url(`${envData.url}/${path}`);
+    return browser.url(`${envData.url}${path}`);
   }
 
   public currentUrl() {

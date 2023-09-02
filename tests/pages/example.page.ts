@@ -34,6 +34,7 @@ class ExamplePage extends Page {
      * overwrite specific options to adapt it to page object
      */
     public open () {
+        //Path should always start with a forward slash. i.e "/example
         return super.open('/');
     }
 }
