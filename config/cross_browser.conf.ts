@@ -4,6 +4,8 @@
  *
  * e.g. this is where we would change browser capabilities and apply the LambdaTest config
  */
+
+//TODO: this is still be be implemented.
 import { config as baseConfig } from '../wdio.conf.ts';
 import { Options } from '@wdio/types';
 

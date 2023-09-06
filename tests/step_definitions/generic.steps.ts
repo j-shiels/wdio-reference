@@ -20,5 +20,5 @@ Given(/^the project allows them to print out the test data$/, async () => {
   console.log('-------------------');
 });
 Given(/^the project can do visual validation$/, async function () {
-  await expect(await visualValidationCheck('./tests/visual_validation/expected.png')).toBeTruthy();
+  await expect(await visualValidationCheck('./test_data/visual_validation/expected.png')).toBeTruthy();
 });
