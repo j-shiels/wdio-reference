@@ -35,7 +35,7 @@ class ExamplePage extends Page {
      */
     public open () {
         //Path should always start with a forward slash. i.e "/example
-        return super.open('/');
+        return super.openPath('/');
     }
 }
 

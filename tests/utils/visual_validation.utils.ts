@@ -22,12 +22,9 @@ export async function visualValidationCheck(expectedImage: string) {
   }
 
   //setup various needed items for the comparison to work.
-  const expected = PNG.sync.read(fs.readFileSync(expectedImage));
   const uuid = randomUUID();
   const actual = PNG.sync.read(await browser.saveScreenshot(`${actualImageOutput}/actual-${uuid}.png`));
-  //example attachment of image on disk to test report.
-  cucumberJson.attach(fs.readFileSync(`${actualImageOutput}/actual-${uuid}.png`).toString('base64'), 'image/png');
-
+  const expected = PNG.sync.read(fs.readFileSync(expectedImage));
   const { width, height } = expected;
   const diff = new PNG({ width, height });
 
@@ -38,6 +35,10 @@ export async function visualValidationCheck(expectedImage: string) {
   if (diffCount > 0) {
     fs.writeFileSync(`${actualImageOutput}/diff-${uuid}.png`, PNG.sync.write(diff));
     console.log('Images do not match');
+    cucumberJson.attach('Actual -> Expected -> Diff');
+    cucumberJson.attach(fs.readFileSync(`${actualImageOutput}/actual-${uuid}.png`).toString('base64'), 'image/png');
+    cucumberJson.attach(fs.readFileSync(expectedImage).toString('base64'), 'image/png');
+    cucumberJson.attach(fs.readFileSync(`${actualImageOutput}/diff-${uuid}.png`).toString('base64'), 'image/png');
   }
 
   return diffCount <= 0;

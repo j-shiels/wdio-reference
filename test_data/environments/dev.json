@@ -1,4 +1,8 @@
 {
+  "config": {
+    "tests": "./tests/features/functional/**/example.feature",
+    "cross_browser": true
+  },
   "url": "https://www.google.com",
   "user": "devUser",
   "password": "PLACEHOLDER"

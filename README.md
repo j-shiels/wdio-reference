@@ -91,7 +91,10 @@ Main config for WDIO is contained within ```wdio.conf.ts```.
 
 This project also uses custom test data stored in json files. This can be either static or env specific in nature and we have a few utils functions to handle this.
 
+You should not need to make any changes to this file unless it's expected to be changed for everything. Use the Dynamic config in the config folder or use Env config.
+
 ### Env Config
+
 Environment specific config is held with json files under the ```test_data/environment``` location. We trigger which json file to use based on input from the cmdline when the suite is ran.
 
 We make use of the yargs module to parse a ```--Env``` argument which is then used to choose the relevant json file. A run cmd could look like this:
